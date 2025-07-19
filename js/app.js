@@ -6,12 +6,23 @@ document.addEventListener('DOMContentLoaded', ()=>{
     
     const formularie = document.querySelector('#formx');
 
-    formularie.addEventListener('submit', (ev)=>{
+    if(!formularie){
+        console.info("Form doesn't founded.");
+        return;
+    }
+
+    formularie.addEventListener('submit', async (ev)=>{
         ev.preventDefault();
 
         const id = document.querySelector('#idx').value;
         const name = document.querySelector('#namex').value;
-        const age = document.querySelector('#agex').value;
+        const age = parseInt(document.querySelector('#agex').value);
+
+        // Validation to prevent an empty register
+        if(!id || !name || !age){
+            alert("Is not permited empty fields.");
+            return;
+        }
 
         const newObj = {
             id : id,
@@ -19,15 +30,15 @@ document.addEventListener('DOMContentLoaded', ()=>{
             age : age
         };
 
-        formularie.reset();
+        try{
+            const response = await postData(newObj);
+            console.info("Data sent correctly.");
+            formularie.reset();
+        } catch(error){
+            console.info("Error to send data", error);
+        }
 
-    })
+    });
+});
 
-
-})
-
-function clearForm(){
-    document.querySelector('#formx').reset();
-    alert("Data cleared, you can start again.")
-}
 

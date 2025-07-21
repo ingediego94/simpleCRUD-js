@@ -8,6 +8,7 @@ export async function getData() {
         if(!response.ok) throw new Error(`Error HTTP ${response.status}.`);
 
         const result = await response.json();
+        return result;
         // console.log(result);
 
     } catch(error){

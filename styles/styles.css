@@ -46,7 +46,10 @@ h1, h2 {
     border: 1px solid gray;
     color: white;
     font-weight: bold;
+    cursor: pointer;
 }
+
+
 
 #send-btn{
     background-color: rgb(15, 152, 15);
@@ -54,6 +57,14 @@ h1, h2 {
 
 #cancel-btn{
     background-color: rgb(233, 63, 63);
+}
+
+#edit-btn {
+    background-color: orange
+}
+
+#delete-btn {
+    background-color: red;
 }
 
 table{
